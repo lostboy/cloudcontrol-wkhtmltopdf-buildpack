@@ -6,6 +6,8 @@ BIN_PATH="$1/bin/"
 mkdir -p $BIN_PATH
 
 WKHTMLTOPDF_BINARY="http://sourceforge.net/projects/wkhtmltopdf/files/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb/download"
+#WKHTMLTOPDF_BINARY="http://sourceforge.net/projects/wkhtmltopdf/files/0.12.1/wkhtmltox-0.12.1_linux-precise-amd64.deb/download"
+
 WKHTMLTOPDF_PATH="$1/bin/wkhtmltopdf"
 WKHTMLTOPDF_COMPRESSED_PATH="$1/bin/wkhtmltox.deb"
 WKHTMLTOX_PATH="$1/bin/usr/local/bin"
@@ -15,7 +17,7 @@ echo "-----> Transferring wkhtmltopdf compressed binary"
 curl -L $WKHTMLTOPDF_BINARY -o $WKHTMLTOPDF_COMPRESSED_PATH
 
 echo "-----> Decompressing binary"
-dpkg-deb -Zgzip -x $WKHTMLTOPDF_COMPRESSED_PATH $BIN_PATH
+dpkg-deb -x $WKHTMLTOPDF_COMPRESSED_PATH $BIN_PATH
 
 echo "-----> Removing compressed binary"
 rm -f $WKHTMLTOPDF_COMPRESSED_PATH
